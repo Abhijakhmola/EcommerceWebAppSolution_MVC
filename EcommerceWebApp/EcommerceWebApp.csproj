@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ECommerceWebApp.DataAccess\ECommerceWebApp.DataAccess.csproj" />
+    <ProjectReference Include="..\ECommerceWebApp.Utility\ECommerceWebApp.Utility.csproj" />
   </ItemGroup>
 
 </Project>
