@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace ECommerceWebApp.Models
@@ -12,5 +14,9 @@ namespace ECommerceWebApp.Models
         public string? City { get; set; }
         public string? State { get; set; }
         public string? PostalCode { get; set; }
+        public int? CompanyId { get; set; }
+        [ValidateNever]
+        [ForeignKey("CompanyId")]
+        public Company Company { get; set; }
     }
 }
