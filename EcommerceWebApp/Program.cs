@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using ECommerceWebApp.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using EcommerceWebApp.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,8 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole(SD.Role_Admin));
 });
 
+builder.Services.AddSingleton<RazorpayService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,6 +55,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 
 app.UseRouting();
 
