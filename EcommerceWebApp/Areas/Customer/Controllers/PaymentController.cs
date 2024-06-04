@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceWebApp.Areas.Customer.Controllers
 {
+	[Route("[controller]")]
 	public class PaymentController : Controller
 	{
 		private readonly RazorpayService _razorpayService;
@@ -13,6 +14,7 @@ namespace EcommerceWebApp.Areas.Customer.Controllers
 			_razorpayService = razorpayService;
 		}
 
+		[Route("[action]")]
 		public IActionResult Index(PaymentViewModel paymentViewModel)
 		{
 			
