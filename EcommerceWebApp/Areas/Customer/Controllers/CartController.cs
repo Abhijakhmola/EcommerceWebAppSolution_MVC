@@ -1,5 +1,4 @@
-﻿using EcommerceWebApp.Service;
-using ECommerceWebApp.DataAccess.Repository.IRespository;
+﻿using ECommerceWebApp.DataAccess.Repository.IRespository;
 using ECommerceWebApp.Models;
 using ECommerceWebApp.Models.ViewModels;
 using ECommerceWebApp.Utility;
