@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using ECommerceWebApp.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using EcommerceWebApp.Service;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,7 +42,9 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole(SD.Role_Admin));
 });
 
-builder.Services.AddSingleton<RazorpayService>();
+builder.Services.Configure<RazorPaySettings>(builder.Configuration.GetSection("Razorpay"));
+builder.Services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<RazorPaySettings>>().Value);
+
 
 var app = builder.Build();
 

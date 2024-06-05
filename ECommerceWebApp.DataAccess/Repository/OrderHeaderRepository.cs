@@ -32,7 +32,7 @@ namespace ECommerceWebApp.DataAccess.Repository
             }
 		}
 
-		public void UpdateStripePaymentId(int Id, string sessionId, string paymentIntentId)
+		public void UpdateRazorpayPaymentId(int Id, string sessionId, string paymentIntentId)
 		{
 			var orderFromDb=_db.OrderHeaders.FirstOrDefault(u=>u.Id==Id);
             if(!string.IsNullOrEmpty(sessionId))
@@ -41,7 +41,7 @@ namespace ECommerceWebApp.DataAccess.Repository
             }  
             if(!string.IsNullOrEmpty(paymentIntentId))
             {
-                orderFromDb.PaymentIntentId=paymentIntentId;   
+                orderFromDb.PaymentId=paymentIntentId;   
                 orderFromDb.PaymentDate=DateTime.Now;   
             }   
 		}

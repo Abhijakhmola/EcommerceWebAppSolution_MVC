@@ -12,7 +12,7 @@ namespace ECommerceWebApp.DataAccess.Repository.IRespository
         void Update(OrderHeader obj);
 
         void UpdateStatus(int Id,string orderStatus,string? paymentStatus=null);
-        void UpdateStripePaymentId(int Id,string sessionId,string paymentIntentId);
+        void UpdateRazorpayPaymentId(int Id,string sessionId,string paymentIntentId);
     }
 
 }
