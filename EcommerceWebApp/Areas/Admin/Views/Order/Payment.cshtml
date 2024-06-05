@@ -1,0 +1,38 @@
+﻿@model PaymentVM
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<form>
+    <script>
+        var options = {
+            "key": "@Model.RazorpayKey", // Enter the Key ID generated from the Dashboard
+            "amount": "@(Model.OrderTotal * 100)", // Amount is in currency subunits. Default currency is INR. Hence, 100 means 1 INR
+            "currency": "INR",
+            "name": "Your Store Name",
+            "description": "Order Payment",
+            "order_id": "@Model.OrderId", // This is a sample Order ID. Pass the `id` obtained in the previous step
+            "handler": function (response) {
+                window.location.href = '/admin/order/PaymentConfirmation?id=@Model.OrderHeaderId&paymentId=' + response.razorpay_payment_id;
+            },
+            "prefill": {
+                "name": "@Model.CustomerName",
+                "email": "@Model.CustomerEmail",
+                "contact": "@Model.CustomerContact"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
+        rzp1.open();
+        e.preventDefault();
+    </script>
+</form>
