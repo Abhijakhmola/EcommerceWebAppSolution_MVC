@@ -9,5 +9,6 @@ namespace ECommerceWebApp.DataAccess.Repository.IRespository
 {
     public interface IApplicationUserRepository : IRepository<ApplicationUser>
     {
+        public void Update(ApplicationUser applicationUser);
     }
 }
